@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+<html>
+<h2>Product Information</h2>
+<head>
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/knockout-2.2.0.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/Product/Index.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <input type="button" id="Prodlist" value="Product List" />
+    <input type="button" id="Loglist" value="Logs" />
+    <div id="content">
+
+    </div>
+    
+    <script type="text/javascript">
+        $("#content").load('@Url.Action("Data","Product")');
+        document.getElementById('Prodlist').onclick = function (e) {
+            $("#content").load('@Url.Action("Data","Product")');
+        }
+        document.getElementById('Loglist').onclick = function (e) {
+            $("#content").load('@Url.Action("Log","Product")');
+        }
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Log";
+}
+<html>
+<h1>Product Log</h1>
+<head>
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/knockout-2.2.0.js"></script>
+    <script src="~/Scripts/Product/Log/Log.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="FixedContainer">
+        <!--If the length of the Product is greater than 0 then visible the Table-->
+        <table data-bind="visible:  Log().length>0" style="border: double">
+            <thead>
+                <tr>
+                    <td>Log ID</td>
+                    <td>Message</td>
+                    <td>Timestamp</td>
+
+                </tr>
+            </thead>
+            <!--Iterate through an observableArray using foreach-->
+            <tbody data-bind="foreach:  Log">
+                <tr style="border: solid" id="updtr">
+                    <td><span data-bind="text: LogID"></span></td>
+                    <td><span data-bind="text: Message"></span></td>
+                    <td><span data-bind="text: Date"></span></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

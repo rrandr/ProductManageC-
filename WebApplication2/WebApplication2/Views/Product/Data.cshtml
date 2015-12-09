@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+<html>
+<h1>Product List</h1>
+<head>
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/knockout-2.2.0.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/Product/Data/Data.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    <!--Bind the TextBoxes in the Table to the observable properties defined into the ViewModel -->
+                    <table id="tbldml">
+                        <tr>
+                            <td>Product ID</td>
+                            <td>
+                                <input type="text" id="txteno" data-bind="value: $root.ProdID" disabled="disabled" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Product Name</td>
+                            <td>
+                                <input type="text" id="txtename" data-bind="value: $root.ProdName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>
+                                <input type="text" id="txtsal" data-bind="value: $root.Price" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>
+                                <input type="text" id="txtdname" data-bind="value: $root.Description" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!--The click binding has the JavaScirpt methods passed to it-->
+                            <td>
+                                <button data-bind="click :$root.save">Save</button>
+                            </td>
+                            <td>
+                                <button data-bind="click: $root.update">Update</button>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <div class="FixedContainer">
+                        <!--If the length of the Product is greater than 0 then visible the Table-->
+                        <table data-bind="visible:  Product().length>0" style="border: double">
+                            <thead>
+                                <tr>
+                                    <td>Product ID</td>
+                                    <td>Product Name</td>
+                                    <td>Price</td>
+                                    <td>Description</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <!--Iterate through an observableArray using foreach-->
+                            <tbody data-bind="foreach:  Product">
+                                <tr style="border: solid" data-bind="click: $root.getproductselected" id="updtr">
+                                    <td><span data-bind="text: ProdID"></span></td>
+                                    <td><span data-bind="text: ProdName"></span></td>
+                                    <td><span data-bind="text: Price"></span></td>
+                                    <td><span data-bind="text: Description"></span></td>
+                                    <td>
+                                        <button data-bind="click: $root.deleterec">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+                <td>
+                  
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+
