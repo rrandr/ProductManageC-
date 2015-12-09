@@ -1,3 +1,3 @@
 # ProductManageC-
 
-Configure Web.config , no sql script needed , it will be automatically created
+Configure Web.config , no sql script needed , the database needed  will be automatically created
